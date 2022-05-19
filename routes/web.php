@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,11 +21,9 @@ Route::get('/', [PageController::class, 'showCars']);
 Route::get('/view', [PageController::class, 'showCarsView']);
 Route::get('/index', [PageController::class, 'showCars']);
 Route::get('/detail/{id}', [PageController::class, 'detail']);
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
+Route::get('/login', function () {
+    return view('login');
+});
 
 
 require __DIR__.'/auth.php';

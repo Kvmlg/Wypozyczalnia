@@ -29,36 +29,6 @@
 
 <body>
 
-  <div class="click-closed"></div>
-  <!--/ Form Search Star /-->
-  <div class="box-collapse">
-    <div class="title-box-d">
-      <h3 class="title-d">Login</h3>
-    </div>
-    <span class="close-box-collapse right-boxed ion-ios-close"></span>
-    <div class="box-collapse-wrap form">
-    <form method="POST" action="{{ route('login') }}">
-        <div class="row">
-          <div class="col-md-6 mb-2">
-            <div class="form-group">
-              <label for="Type">Email</label>
-              <input type="email" class="form-control form-control-lg form-control-a" placeholder="Wprowadź swój email" name="login">
-            </div>
-          </div>
-          <div class="col-md-6 mb-2">
-            <div class="form-group">
-              <label for="bedrooms">Hasło</label>
-              <input type="password" class="form-control form-control-lg form-control-a" placeholder="Wprowadź swoje hasło" name="pass">
-            </div>
-          </div>
-          <div class="col-md-12">
-            <button type="submit" class="btn btn-b">Zaloguj</button>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-  <!--/ Form Search End /-->
 
   <!--/ Nav Star /-->
   <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
@@ -90,12 +60,11 @@
           </li>
         </ul>
       </div>
-      <button type="button" class="btn btn-b-n navbar-toggle-box-collapse d-none d-md-block" data-toggle="collapse"
-        data-target="#navbarTogglerDemo01" aria-expanded="false" >
+      <a class="btn btn-b-n navbar-toggle-box-collapse d-none d-md-block" href="{{ url('login') }}">
         <!--/ <span class="fa fa-search" aria-hidden="true"></span>/-->
         <img src="images/icons8-user-24.png" height="15px" width="15px" >
 
-      </button>
+      </a>
     </div>
   </nav>
   <!--/ Nav End /-->

@@ -71,7 +71,7 @@
 
 
 <div class="container">
-<div class="row" style="height:1200px; margin-top:35px; ">
+<div class="row" style="height:900px; margin-top:35px; ">
 @foreach ($car as $cars)
     <br>
     <div class="left" style="margin-top:30px; left:15px; height:700px; width:400px; background-color:#2eca6a; border-radius:20px; padding-top:25px; float:left;">
@@ -84,11 +84,11 @@
         <div class="infos" style="height:300px; width:700px; float:left; justify-content: center; ">
             <div  style="height:100px; width:150px; float:left; margin: 5% 0% 0% 9%">
                 <p style="color:#2eca6a; font-size:26px; font-decoration:">Moc</p>
-                <p>{{$cars->Moc}}</p>
+                <p>{{$cars->Moc}} KM</p>
             </div>
             <div style="height:100px; width:150px; float:left; margin: 5% 0% 0% 9%">
                 <p style="color:#2eca6a; font-size:26px;">0-100</p>
-                <p>{{$cars->Czas}}</p>                
+                <p>{{$cars->Czas}} s</p>                
             </div>
             <div style="height:100px; width:150px; float:left; margin: 5% 0% 0% 9%">
                 <p style="color:#2eca6a; font-size:26px;">Skrzynia</p>
@@ -100,14 +100,14 @@
             </div>
             <div style="height:100px; width:150px; float:left; margin: 2% 0% 0% 9%">
                 <p style="color:#2eca6a; font-size:26px;">Silnik</p>
-                <p>{{$cars->Pojemnosc_silnika}}</p>
+                <p>{{$cars->Pojemnosc_silnika}} cm<sup>3</sup></p>
             </div>
             <div style="height:100px; width:150px; float:left; margin: 2% 0% 0% 9%">
                 <p style="color:#2eca6a; font-size:26px;">Rejestracja</p>
                 <p>{{$cars->Numer_rejestracyjny}}</p>
             </div>
         </div> 
-        <div class="description" style="height:700px; width:700px; float:left; justify-content: center; ">
+        <div class="description" style="height:200px; width:700px; float:left; justify-content: center; ">
         <hr>
         <h2><div style="margin-left:30px;">Opis</div></h2>
         </div>
