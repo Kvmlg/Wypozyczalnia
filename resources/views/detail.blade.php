@@ -71,16 +71,57 @@
 
 
 <div class="container">
-<div class="row">
+<div class="row" style="height:1200px; margin-top:35px; ">
+@foreach ($car as $cars)
     <br>
-    {{$car}}
+    <div class="left" style="margin-top:30px; left:15px; height:700px; width:400px; background-color:#2eca6a; border-radius:20px; padding-top:25px; float:left;">
+    
+        <img src="../{{$cars->Photo}}" style=" max-width:90%; max-height:70%; object-fit: cover; border-radius: 20px;  display: block; margin-left: auto; margin-right: auto";>
+        
+    </div>
+    <div class="right" style="height:1000px; width:700px; border-radius:20px; padding-top:25px; float:left; margin-left:35px; margin-top:20px;">
+        <h1><div class="cartitle">{{$cars->Marka}} {{$cars->Model}}</div></h1>
+        <div class="infos" style="height:300px; width:700px; float:left; justify-content: center; ">
+            <div  style="height:100px; width:150px; float:left; margin: 5% 0% 0% 9%">
+                <p style="color:#2eca6a; font-size:26px; font-decoration:">Moc</p>
+                <p>{{$cars->Moc}}</p>
+            </div>
+            <div style="height:100px; width:150px; float:left; margin: 5% 0% 0% 9%">
+                <p style="color:#2eca6a; font-size:26px;">0-100</p>
+                <p>{{$cars->Czas}}</p>                
+            </div>
+            <div style="height:100px; width:150px; float:left; margin: 5% 0% 0% 9%">
+                <p style="color:#2eca6a; font-size:26px;">Skrzynia</p>
+                <p>{{$cars->Skrzynia}}</p>
+            </div>
+            <div style="height:100px; width:150px; float:left; margin: 2% 0% 0% 9%">
+                <p style="color:#2eca6a; font-size:26px;">Napęd</p>
+                <p>{{$cars->Naped}}</p>    
+            </div>
+            <div style="height:100px; width:150px; float:left; margin: 2% 0% 0% 9%">
+                <p style="color:#2eca6a; font-size:26px;">Silnik</p>
+                <p>{{$cars->Pojemnosc_silnika}}</p>
+            </div>
+            <div style="height:100px; width:150px; float:left; margin: 2% 0% 0% 9%">
+                <p style="color:#2eca6a; font-size:26px;">Rejestracja</p>
+                <p>{{$cars->Numer_rejestracyjny}}</p>
+            </div>
+        </div> 
+        <div class="description" style="height:700px; width:700px; float:left; justify-content: center; ">
+        <hr>
+        <h2><div style="margin-left:30px;">Opis</div></h2>
+        </div>
+    </div>
+    
+
+@endforeach
 </div>
 </div>
 
 
 <!--/ footer Star /-->
 
-<footer style="  position: fixed; bottom: 0; width: 100%;">
+<footer>
 <div class="container">
     <div class="row">
     <div class="col-md-12">

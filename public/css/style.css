@@ -33,6 +33,9 @@ a:hover {
   text-decoration: none;
 }
 
+.chuj{
+  height:100px; width:150px; float:left; background-color:red; margin-left:10%;
+}
 
 .link-two {
   color: #000000;
