@@ -60,12 +60,11 @@
           </li>
         </ul>
       </div>
-      <button type="button" class="btn btn-b-n navbar-toggle-box-collapse d-none d-md-block" data-toggle="collapse"
-        data-target="#navbarTogglerDemo01" aria-expanded="false" >
+      <a class="btn btn-b-n navbar-toggle-box-collapse d-none d-md-block" href="{{ url('login') }}">
        <!--/ <span class="fa fa-search" aria-hidden="true"></span>/-->
        <img src="images/icons8-user-24.png" height="15px" width="15px" >
 
-      </button>
+        </a>
     </div>
   </nav>
   <!--/ Nav End /-->

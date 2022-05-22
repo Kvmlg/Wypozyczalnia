@@ -61,7 +61,7 @@
         </ul>
       </div>
       @if( auth()->check() )
-                  <a>Witaj {{ auth()->user()->Imie }}!
+                  <a>Witaj <a style="Color:#2eca6a">&nbsp{{ auth()->user()->Imie }}</a>!</a>
                     <a class="nav-link" href="{{ url('logout') }}" style="margin-left:30px;">   Logout</a> 
       @else
       <a class="btn btn-b-n navbar-toggle-box-collapse d-none d-md-block" href="{{ url('login') }}">
