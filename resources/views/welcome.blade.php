@@ -60,11 +60,15 @@
           </li>
         </ul>
       </div>
+      @if( auth()->check() )
+                  <a>Witaj {{ auth()->user()->Imie }}!
+                    <a class="nav-link" href="{{ url('logout') }}" style="margin-left:30px;">   Logout</a> 
+      @else
       <a class="btn btn-b-n navbar-toggle-box-collapse d-none d-md-block" href="{{ url('login') }}">
         <!--/ <span class="fa fa-search" aria-hidden="true"></span>/-->
         <img src="images/icons8-user-24.png" height="15px" width="15px" >
-
       </a>
+      @endif
     </div>
   </nav>
   <!--/ Nav End /-->

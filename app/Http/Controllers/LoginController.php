@@ -7,30 +7,26 @@ use Illuminate\Support\Facades\DB;
 
 class LoginController extends Controller
 {
-    public $loginl;
-    public $rola;
-    public $ID;
+    public function create()
+    {
+        return view('login');
+    }
 
-    public function login(){
-        $log=$_GET['login'];
-        $haslo=$_GET['haslo'];
-
-        $uzytkownik=DB::table('uzytkownicy')->where('Login', $log)->first();
-        $this->login=$uzytkownik->Login;
-        $hasloBaza=$uzytkownik->Haslo;
-        $this->rola=$uzytkownik->Rola;
-        $this->ID=$uzytkownik->ID_Uzytkownik;
-
-        if($this->login == $log && $hasloBaza == $haslo){
-            if(session_start()==PHP_SESION_NONE){
-                session_start();
-            }
-            $_SESSION["newsession"]=$this->rola;
-            $_SESSION["login"]=$this->login;
-            $_SESSION["id"]=$this->ID;
-            return view('login', ['rola=>$this->rola']);
-        }else{
-            return view('login');
+    public function store()
+    {
+        if (auth()->attempt(request(['Email', 'password'])) == false) {
+            return back()->withErrors([
+                'message' => 'Email lub hasło są nieprawidłowe.'
+            ]);
         }
+        
+        return redirect()->to('/');
+    }
+
+    public function destroy()
+    {
+        auth()->logout();
+        
+        return redirect()->to('/');
     }
 }

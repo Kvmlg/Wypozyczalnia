@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,9 +22,11 @@ Route::get('/', [PageController::class, 'showCars']);
 Route::get('/view', [PageController::class, 'showCarsView']);
 Route::get('/index', [PageController::class, 'showCars']);
 Route::get('/detail/{id}', [PageController::class, 'detail']);
-Route::get('/login', function () {
-    return view('login');
-});
+Route::get('/login', 'LoginController@create');
+Route::post('/login', 'LoginController@store');
+Route::get('/logout', 'LoginController@destroy');
+Route::get('/register', 'RegisterController@create');
+Route::post('register', 'RegisterController@store');
 
 
 require __DIR__.'/auth.php';

@@ -52,17 +52,23 @@
       </button>
     </div>
   </nav>
-<div class="login-page">
+<div class="login-page" style="padding-top:4%;">
   <div class="form">
-    <form class="login-form" method="POST" action="login">
+    <form method="POST" action="{{ url('register') }}" style="margin:0 auto 0;">
     {{ csrf_field() }}
       <input type="text" placeholder="Email" name="Email"/>
       <input type="password" placeholder="Haslo" name="password"/>
-      <button type="submit">login</button>
-      <p class="message">Nie masz konta? <a href="{{ url('register') }}">Utwórz</a></p>
-      @if ($errors->has('message'))
-          {{ $errors->first('message') }}
-        @endif
+      <input type="text" placeholder="Imie" name="Imie"/>
+      <input type="number" placeholder="Numer telefonu" name="NumerTelefonu"/>
+      <input type="text" placeholder="Miasto" name="Miasto"/>
+      <input type="text" placeholder="Ulica" name="Ulica"/>
+      <input type="text" placeholder="Numer Mieszkania" name="NumerMieszkania"/>
+      <input type="number" placeholder="Pesel" name="Pesel"/>
+      <button>create</button>
+      <p class="message">Zarejestrowny? <a href="{{ url('login') }}">Zaloguj się</a></p>
+  @if($errors->has('message'))
+  {{errors->first('message')}}
+  @endif
     </form>
   </div>
 </div>
