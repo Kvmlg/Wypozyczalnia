@@ -25,6 +25,7 @@
   <!-- Main Stylesheet File -->
   <link href="css/style.css" rel="stylesheet">
 
+
 </head>
 
 <body>
@@ -75,9 +76,17 @@
     </div>
   </nav>
   <!--/ Nav End /-->
+  <div id="left-menu">
+    <div id="column">
+        <div id="free-space"></div>
+        <div id="category" class="current"><a href="{{ url('index')}}">Dodaj samochód</a></div>
+        <div id="category"><a href="{{ url('index')}}">Edycja samochód</a></div>
+        <div id="category"><a href="{{ url('index')}}">Edycja użytkownika</a></div>
+        <div id="category"><a href="{{ url('index')}}">Zarządzaj wynajami</a></div>
+    </div>
+</div>
 
-  @yield('container')
-
+@yield('container')
 
 
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
