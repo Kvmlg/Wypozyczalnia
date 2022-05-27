@@ -1,8 +1,8 @@
 @extends('layouts.navigation')
-@section('content')
+@section('container')
 @section('title', 'Rejstracja')
 <link href="css/stylelogin.css" rel="stylesheet">
-<div class="login-page" style="padding-top:7%;">
+<div class="login-page" style="padding-top:10rem;">
   <div class="form">
     <form method="POST" action="{{ url('register') }}" style="margin:0 auto 0;">
     {{ csrf_field() }}
@@ -24,3 +24,4 @@
 </div>
 
 <script type="text/javascript" src="{{ asset('js/login.js')}}"></script>
+@endsection

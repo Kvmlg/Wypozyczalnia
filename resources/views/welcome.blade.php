@@ -531,3 +531,4 @@
     </div>
   </footer>
   <!--/ Footer End /-->
+  @endsection

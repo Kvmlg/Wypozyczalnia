@@ -1,5 +1,5 @@
 @extends('layouts.navigation')
-@section('content')
+@section('container')
 @section('title', 'Logowanie')
 <link href="css/stylelogin.css" rel="stylesheet">
 <div class="login-page" style="padding-top:15%;">
@@ -18,3 +18,4 @@
 </div>
 
 <script type="text/javascript" src="{{ asset('js/login.js')}}"></script>
+@endsection
