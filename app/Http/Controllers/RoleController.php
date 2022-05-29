@@ -13,7 +13,7 @@ class RoleController extends Controller
         if((Auth::check() && Auth::user()->Ranga == "Admin")==false){
             return redirect()->to('/login');
         }
-        $car=DB::table('samochod')->get();
+        $car=DB::table('samochod')->orderBy('idSamochod', 'desc')->paginate(6);
         return view('addCar',compact('car'));
     }
 
@@ -21,7 +21,7 @@ class RoleController extends Controller
         if((Auth::check() && Auth::user()->Ranga == "Admin")==false){
             return redirect()->to('/login');
         }
-        $car=DB::table('samochod')->get();
+        $car=DB::table('samochod')->orderBy('idSamochod', 'desc')->paginate(6);
         return view('managCar',compact('car'));
     }
 
@@ -37,7 +37,7 @@ class RoleController extends Controller
         if((Auth::check() && Auth::user()->Ranga == "Admin")==false){
             return redirect()->to('/login');
         }
-        $user=DB::table('users')->get();
+        $user=DB::table('users')->orderBy('id', 'desc')->paginate(6);
         return view('managUser', compact('user'));
     }
 
@@ -53,7 +53,7 @@ class RoleController extends Controller
         if((Auth::check() && Auth::user()->Ranga == "Admin")==false){
             return redirect()->to('/login');
         }
-        $doc=DB::table('dokumenty_pojazdu')->get();
+        $doc=DB::table('dokumenty_pojazdu')->orderBy('idDokumenty_pojazdu', 'desc')->paginate(6);
         return view('addDocuments',compact('doc'));
     }
 
@@ -61,7 +61,7 @@ class RoleController extends Controller
         if((Auth::check() && Auth::user()->Ranga == "Admin")==false){
             return redirect()->to('/login');
         }
-        $doc=DB::table('dokumenty_pojazdu')->get();
+        $doc=DB::table('dokumenty_pojazdu')->orderBy('idDokumenty_pojazdu', 'desc')->paginate(6);
         return view('manageDocuments',compact('doc'));
     }
 

@@ -63,9 +63,10 @@
       </div>
     </div>
   </section>
+  <div class="menu" style="position: relative;">
       <!--/ Agents End /-->
-
-      
+      {{ $show->links() }}
+</div></br>
   <!--/ footer Star /-->
 
   <footer>

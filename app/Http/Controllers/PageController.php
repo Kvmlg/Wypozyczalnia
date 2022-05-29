@@ -20,7 +20,7 @@ class PageController extends Controller
     }
 
     public function showCarsView(){
-        $show=DB::table('samochod')->get();
+        $show=DB::table('samochod')->paginate(6);;
 
         return view('overview', compact('show'));
     }

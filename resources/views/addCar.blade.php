@@ -59,5 +59,10 @@
 <br>
 <button type="add">Dodaj</button>
 </form>
+<br>
+<div class="menu" style="position: relative;">
+      <!--/ Agents End /-->
+      {{ $car->links() }}
+</div></br>
 </div>
 @endsection

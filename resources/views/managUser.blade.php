@@ -37,6 +37,10 @@
   @endforeach
 </table>
 <br>
+<div class="menu" style="position: relative;">
+      <!--/ Agents End /-->
+      {{ $user->links() }}
+</div></br>
 </form>
 </div>
 @endsection
