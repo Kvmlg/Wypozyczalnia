@@ -1,10 +1,7 @@
 @extends('layouts.admin')
 <link href="{{ asset('css/panelAdmin.css')}}" rel="stylesheet">
 @section('title', 'Admin Panel')
-@section('one', 'none')
-@section('two', 'current')
-@section('three', 'none')
-@section('four', 'none')
+@section('three', 'current')
 @section('container')
 <div id="right-side">
 <div id="free-space">
@@ -22,7 +19,10 @@
         <input type="text" value="{{$users->Ulica}}" name="Ulica"/>
         <input type="text" value="{{$users->NumerMieszkania}}" name="NumerMieszkania"/>
         <input type="text" value="{{$users->Pesel}}" name="Pesel"/>
-        <input type="text" value="{{$users->Ranga}}" name="Ranga"/>
+        <select name="Ranga">
+            <option value="User">User</option>
+            <option value="Admin">Admin</option>
+        </select>
         <br>
         <button type="submit" style="margin-left:0% !important; margin-top:20px;">Edytuj</button>
         </form>

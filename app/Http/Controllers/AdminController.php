@@ -15,19 +15,19 @@ class AdminController extends Controller
     }
     public function addCar(Request $request)
     {
-        $Email = $request->input('Email');
-        $password = $request->input('password');
-        $Imie = $request->input('Imie');
-        $NumerTelefonu = $request->input('NumerTelefonu');
-        $Miasto = $request->input('Miasto');
-        $Ulica = $request->input('Ulica');
-        $NumerMieszkania = $request->input('NumerMieszkania');
-        $Pesel = $request->input('Pesel');
-        $Ranga = $request->input('Ranga');
+        $Marka = $request->input('Marka');
+        $Model = $request->input('Model');
+        $Moc = $request->input('Moc');
+        $Rok_Produkcji = $request->input('Rok_Produkcji');
+        $Pojemnosc_silnika = $request->input('Pojemnosc_silnika');
+        $Numer_rejestracyjny = $request->input('Numer_rejestracyjny');
+        $Photo = $request->input('Photo');
+        $Cena = $request->input('Cena');
+        $Czas = $request->input('Czas');
         $Skrzynia = $request->input('Skrzynia');
         $Naped = $request->input('Naped');
         $Dokumenty_pojazdu_idDokumenty_pojazdu= $request->input('Dokumenty_pojazdu_idDokumenty_pojazdu');
-        $data=array('Email'=>$Email, 'password'=>$password, 'Imie'=>$Imie,'NumerTelefonu'=>$NumerTelefonu,'Miasto'=>$Miasto,'Ulica'=>$Ulica,'NumerMieszkania'=>$NumerMieszkania,'Pesel'=>$Pesel,'Ranga'=>$Ranga,'Skrzynia'=>$Skrzynia,'Naped'=>$Naped,'Dokumenty_pojazdu_idDokumenty_pojazdu'=>$Dokumenty_pojazdu_idDokumenty_pojazdu);
+        $data=array('Marka'=>$Marka, 'Model'=>$Model, 'Moc'=>$Moc,'Rok_Produkcji'=>$Rok_Produkcji,'Pojemnosc_silnika'=>$Pojemnosc_silnika,'Numer_rejestracyjny'=>$Numer_rejestracyjny,'Photo'=>$Photo,'Cena'=>$Cena,'Czas'=>$Czas,'Skrzynia'=>$Skrzynia,'Naped'=>$Naped,'Dokumenty_pojazdu_idDokumenty_pojazdu'=>$Dokumenty_pojazdu_idDokumenty_pojazdu);
         DB::table('samochod')->insert($data);
 
         
