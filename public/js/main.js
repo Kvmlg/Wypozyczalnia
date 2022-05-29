@@ -1,6 +1,7 @@
 (function ($) {
   "use strict";
   
+ 
   // Preloader
   $(window).on('load', function () {
     if ($('#preloader').length) {
@@ -147,6 +148,10 @@
 		}
 	});
 
+	$("a[href='#onas']").click(function() {
+		$("html, body").animate({ scrollTop: 0 }, "slow");
+		return true;
+	});
 })(jQuery);
 
 

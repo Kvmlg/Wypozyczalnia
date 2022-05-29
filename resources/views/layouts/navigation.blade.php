@@ -53,7 +53,7 @@
             <a class="nav-link" href="{{ url('index#onas') }}">O nas</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ url('index#nowesam') }}">Samochody</a>
+            <a class="nav-link" href="{{ url('view') }}">Samochody</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ url('index#kontakt') }}">Kontakt</a>
