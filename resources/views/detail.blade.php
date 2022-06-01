@@ -67,7 +67,27 @@
     <div class="left" style="margin-top:30px; left:15px; height:700px; width:400px; background-color:#2eca6a; border-radius:20px; padding-top:25px; float:left;">
     
         <img src="../{{$cars->Photo}}" style=" max-width:90%; max-height:70%; object-fit: cover; border-radius: 20px;  display: block; margin-left: auto; margin-right: auto";>
-        
+            <div class="reserved">
+            @if( $all )
+                <br><a class="resName">Zarezerwowane dni:</a>
+
+                <a class="resName" style="color:red !important"><br>
+                @foreach ($all as $alll)
+                {{$alll}}
+                @endforeach
+                </a>
+            @endif
+            </div>
+            <form method="POST" action="{{ url('reservation') }}" style="margin:0 auto 0;">
+                {{ csrf_field() }}
+                <div class="reserved" style="margin-top:2rem;">
+                    <a class="resName" >Dzień rezerwacji:</a><br>
+                    <input type="date" class="data"><br><br>
+                    <a class="resName">Dzień zwrotu:</a><br>
+                    <input type="date" class="data"><br><br>
+                    <button type="submit" id="but">Rezerwuj</button>
+                </div>
+            </form>
     </div>
     <div class="right" style="height:1000px; width:700px; border-radius:20px; padding-top:25px; float:left; margin-left:35px; margin-top:20px;">
         <h1><div class="cartitle">{{$cars->Marka}} {{$cars->Model}}</div></h1>

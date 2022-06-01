@@ -32,6 +32,32 @@ a {
   transition: all .5s ease;
 }
 
+button#but {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: grey;
+  width: 100px;
+  border: 0;
+  border-radius: 50px !important;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  cursor: pointer;
+  }
+
+  input.data {
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #f2f2f2;
+    border: 0;
+    border-radius: 20px;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+    width: 300px;
+  }
+
 a:hover {
   color: #2eca6a;
   text-decoration: none;
@@ -140,6 +166,13 @@ a:hover {
   z-index: 2;
 }
 
+.reserved{
+  text-align: center;
+}
+
+.resName{
+  color:white !important;
+    }
 /*------/ Bg Image /------*/
 
 .bg-image {
