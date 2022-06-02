@@ -58,6 +58,11 @@
         <li class="nav-item">
             <a class="nav-link" href="{{ url('index#kontakt') }}">Kontakt</a>
         </li>
+        @if(Auth::check() && Auth::user()->Ranga == "User")
+        <li class="nav-item">
+            <a class="nav-link @yield('aktyw')" href="{{ url('myRent') }}">Twoje wynajmy</a>
+        </li>
+        @endif
         </ul>
       </div>
       @if( auth()->check() )

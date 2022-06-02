@@ -89,5 +89,20 @@ class RoleController extends Controller
         return back();
     }
 
+    public function editRent(){
+        if((Auth::check() && Auth::user()->Ranga == "Admin")==false){
+            return redirect()->to('/login');
+        }
+        $show=DB::table('szczegoly_najmu')->join('samochod', 'szczegoly_najmu.Samochod_idSamochod', '=', 'samochod.idSamochod')->join('users', 'szczegoly_najmu.Users_idUsers', '=', 'users.id')->select('szczegoly_najmu.*', 'samochod.Marka','samochod.Model','users.Imie','users.Miasto','users.NumerTelefonu','users.Email')->orderBy('idSzczegoly_najmu', 'desc')->paginate(6);
+        return view('manageRent',compact('show'));
+    }
+
+    public function modRent($id){
+        if((Auth::check() && Auth::user()->Ranga == "Admin")==false){
+            return redirect()->to('/login');
+        }
+        $rent=DB::table('szczegoly_najmu')->where('idSzczegoly_najmu', $id)->get();
+        return view('editRent', compact('rent'));
+    }
 }
 

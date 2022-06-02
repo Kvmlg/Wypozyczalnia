@@ -6,6 +6,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
 {
@@ -48,4 +49,13 @@ class PageController extends Controller
         
         return view('detail', compact('car','all'));
     }
+
+    public function rents(){
+        Auth::check();
+        $idUs= Auth::user()->id;
+        $show=DB::table('szczegoly_najmu')->where('Users_idUsers', $idUs)->join('samochod', 'szczegoly_najmu.Samochod_idSamochod', '=', 'samochod.idSamochod')->select('szczegoly_najmu.*', 'samochod.Marka','samochod.Model')->get();
+        
+        return view('Rents', compact('show'));
+    }
+
 }

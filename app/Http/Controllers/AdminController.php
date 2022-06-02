@@ -135,4 +135,31 @@ class AdminController extends Controller
         return redirect()->to('editDoc');
 
     }
+
+    public function deleteRent($id)
+    {
+        if((Auth::check() && Auth::user()->Ranga == "Admin")==false){
+        return redirect()->to('login');
+        }
+        DB::delete('DELETE FROM szczegoly_najmu WHERE idSzczegoly_najmu = ?', [$id]);
+        return redirect()->to('editRent');
+    }
+
+    public function modRent(Request $request, $id)
+    {
+        if((Auth::check() && Auth::user()->Ranga == "Admin")==false){
+        return redirect()->to('login');
+        }
+
+        $Data_wypozyczenia = $request->input('Data_wypozyczenia');
+        $Data_zwrotu = $request->input('Data_zwrotu');
+        $Samochod_idSamochod = $request->input('Samochod_idSamochod');
+        $Users_idUsers = $request->input('Users_idUsers');
+        $Stan = $request->input('Stan');
+        $data=array('Data_wypozyczenia'=>$Data_wypozyczenia, 'Data_zwrotu'=>$Data_zwrotu, 'Samochod_idSamochod'=>$Samochod_idSamochod, 'Users_idUsers'=>$Users_idUsers, 'Stan'=>$Stan);
+        
+        DB::table('szczegoly_najmu')->where('idSzczegoly_najmu', $id)->update($data);
+        return redirect()->to('editRent');
+
+    }
 }

@@ -84,7 +84,7 @@
         <div id="category" class="@yield('three')"><a href="{{ url('editUser')}}">Edycja użytkownika</a></div>
         <div id="category" class="@yield('four')"><a href="{{ url('addDoc')}}">Dodaj dokumenty</a></div>
         <div id="category" class="@yield('five')"><a href="{{ url('editDoc')}}">Edycja dokumentow</a></div>
-        <div id="category" class="@yield('six')"><a href="{{ url('index')}}">Zarządzaj wynajami</a></div>
+        <div id="category" class="@yield('six')"><a href="{{ url('editRent')}}">Zarządzaj wynajami</a></div>
     </div>
 </div>
 

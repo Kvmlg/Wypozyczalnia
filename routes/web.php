@@ -49,6 +49,14 @@ Route::get('/deleteDoc/{id}', 'AdminController@deleteDoc');
 Route::get('modeDoc/{id}', 'RoleController@modDoc');
 Route::post('modeDoc/{id}', 'AdminController@modDoc');
 
+Route::get('/editRent', 'RoleController@editRent');
+Route::get('/deleteRent/{id}', 'AdminController@deleteRent');
+Route::get('modeRent/{id}', 'RoleController@modRent');
+Route::post('modeRent/{id}', 'AdminController@modRent');
+
 Route::post('detail/reservation/{id}', 'RoleController@reserve');
+
+Route::get('myRent', 'PageController@rents');
+
 
 require __DIR__.'/auth.php';
