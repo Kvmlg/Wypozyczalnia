@@ -72,5 +72,22 @@ class RoleController extends Controller
         $doc=DB::table('dokumenty_pojazdu')->where('idDokumenty_pojazdu', $id)->get();
         return view('editDocuments', compact('doc'));
     }
+
+    public function reserve(Request $request,$id){
+        if((Auth::check() && (Auth::user()->Ranga  == "Admin" || Auth::user()->Ranga  == "User"))==false){
+            return back()->withErrors([
+                'message' => 'Aby zarezerwować pojazd musisz się zalogować!'
+            ]);
+        }
+        
+        $Data_wypozyczenia = $request->input('Data_wypozyczenia');
+        $Data_zwrotu = $request->input('Data_zwrotu');
+        $Samochod_idSamochod=$id;
+        $Users_idUsers=auth()->user()->id;
+        $data=array('Data_wypozyczenia'=>$Data_wypozyczenia, 'Data_zwrotu'=>$Data_zwrotu, 'Samochod_idSamochod'=>$Samochod_idSamochod,'Users_idUsers'=>$Users_idUsers);
+        DB::table('szczegoly_najmu')->insert($data);
+        return back();
+    }
+
 }
 

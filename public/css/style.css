@@ -45,6 +45,10 @@ button#but {
   cursor: pointer;
   }
 
+  div#days{
+    padding-left:20%;
+  }
+
   input.data {
     font-family: "Roboto", sans-serif;
     outline: 0;

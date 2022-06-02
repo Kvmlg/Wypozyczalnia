@@ -49,4 +49,6 @@ Route::get('/deleteDoc/{id}', 'AdminController@deleteDoc');
 Route::get('modeDoc/{id}', 'RoleController@modDoc');
 Route::post('modeDoc/{id}', 'AdminController@modDoc');
 
+Route::post('detail/reservation/{id}', 'RoleController@reserve');
+
 require __DIR__.'/auth.php';

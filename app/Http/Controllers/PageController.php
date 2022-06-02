@@ -43,6 +43,7 @@ class PageController extends Controller
         for($i=$da; $i <=$daRet; $i++){
         array_push($all, $i);
         }
+        sort($all);
         }
         
         return view('detail', compact('car','all'));

@@ -51,14 +51,25 @@
         </li>
     </ul>
     </div>
-    <button type="button" class="btn btn-b-n navbar-toggle-box-collapse d-none d-md-block" data-toggle="collapse"
-    data-target="#navbarTogglerDemo01" aria-expanded="false" >
-    <a class="btn btn-b-n navbar-toggle-box-collapse d-none d-md-block" href="{{ url('login') }}">
-    <!--/ <span class="fa fa-search" aria-hidden="true"></span>/-->
-    <img src="{{ asset('images/icons8-user-24.png') }}" height="15px" width="15px" >
-        </a>
+    @if( auth()->check() )
+      <a>Witaj <a style="Color:#2eca6a">&nbsp{{ auth()->user()->Imie }}</a>!&nbsp&nbsp</a>
+          @if(Auth::check() && Auth::user()->Ranga == "Admin")
+          <a href="{{ url('admin') }}"><img src="{{ asset('images/icon-admin.png')}}" height="25px" width="25px" ></a>
+          @endif
+      <a class="nav-link" href="{{ url('logout') }}" style="margin-left:30px;">   Wyloguj</a> 
+      @else
+      <a class="btn btn-b-n navbar-toggle-box-collapse d-none d-md-block" href="{{ url('login') }}">
+        <!--/ <span class="fa fa-search" aria-hidden="true"></span>/-->
+        <img src="{{ asset('images/icons8-user-24.png')}}" height="15px" width="15px" >
+      </a>
+      @endif
 </div>
 </nav>
+@if($errors->any())
+<div class="error" style="position: relative; background-color:red; height:2rem; text-align:center; color:white; margin-top:3px;">
+        {!! implode('', $errors->all(':message')) !!}
+</div>
+@endif
 <!--/ Nav End /-->
 <div class="container">
 <div class="row" style="height:900px; margin-top:35px; ">
@@ -67,24 +78,26 @@
     <div class="left" style="margin-top:30px; left:15px; height:700px; width:400px; background-color:#2eca6a; border-radius:20px; padding-top:25px; float:left;">
     
         <img src="../{{$cars->Photo}}" style=" max-width:90%; max-height:70%; object-fit: cover; border-radius: 20px;  display: block; margin-left: auto; margin-right: auto";>
-            <div class="reserved">
+            <div class="reserved" id="days">
             @if( $all )
+                <div style="width:250px;">
                 <br><a class="resName">Zarezerwowane dni:</a>
 
-                <a class="resName" style="color:red !important"><br>
+                <a class="resName" style=" color:red !important "><br>
                 @foreach ($all as $alll)
                 {{$alll}}
                 @endforeach
                 </a>
+</div>
             @endif
             </div>
-            <form method="POST" action="{{ url('reservation') }}" style="margin:0 auto 0;">
+            <form method="POST" action="reservation/{{$cars->idSamochod}}" style="margin:0 auto 0;">
                 {{ csrf_field() }}
                 <div class="reserved" style="margin-top:2rem;">
                     <a class="resName" >Dzień rezerwacji:</a><br>
-                    <input type="date" class="data"><br><br>
+                    <input type="date" class="data" name="Data_wypozyczenia"><br><br>
                     <a class="resName">Dzień zwrotu:</a><br>
-                    <input type="date" class="data"><br><br>
+                    <input type="date" class="data" name="Data_zwrotu"><br><br>
                     <button type="submit" id="but">Rezerwuj</button>
                 </div>
             </form>
