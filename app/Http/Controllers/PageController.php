@@ -98,4 +98,13 @@ class PageController extends Controller
         return view('Rents', compact('show', 'days'));
     }
 
+    public function search(Request $request){
+        $ask=$request->input('ask');
+        $show=DB::table('samochod')->where('Marka', $ask)->paginate(6);
+        if(count($show)==0){
+            $show=DB::table('samochod')->where('Model', $ask)->paginate(6);
+            return view('overview', compact('show')); 
+        }
+        return view('overview', compact('show'));
+    }
 }

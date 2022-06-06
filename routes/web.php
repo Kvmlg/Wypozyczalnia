@@ -61,5 +61,7 @@ Route::post('detail/reservation/{id}', 'RoleController@reserve');
 
 Route::get('myRent', 'PageController@rents');
 
+Route::get('search', 'PageController@search');
+
 
 require __DIR__.'/auth.php';

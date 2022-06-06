@@ -77,6 +77,19 @@ button#but {
     width: 300px;
     text-align: center;
   }
+  input.search {
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #f2f2f2;
+    border: 1;
+    border-radius: 20px;
+    margin: 2 0 15px;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 14px;
+    width: 200px;
+    text-align: center;
+  }
 
 a:hover {
   color: #2eca6a;

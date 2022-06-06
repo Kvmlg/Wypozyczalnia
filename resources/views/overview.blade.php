@@ -14,7 +14,17 @@
           </div>
         </div>
       </div>
-      
+            <div class="row">
+        <div class="col-md-12">
+          <div class="title-wrap d-flex justify-content-between" style=" width:100%; padding-bottom:10px !important;">
+            <div class="title-box" style="width:100%">
+              <h2 class="title-a" style="width:400px; float:left;">Nasza kolekcja </h2>
+              <form action="search" method="GET" >
+              <input type="text"style="float:right" class="search" placeholder="Wyszukaj" name="ask">
+              </form>
+            </div>
+          </div>
+        </div>
       <div class="title-wrap d-flex justify-content-between">
       <div class="row">
       @foreach ($show as $showw) 
