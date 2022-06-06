@@ -6,8 +6,8 @@
 @section('four', 'none')
 @section('title', 'Admin Panel')
 @section('container')
-<div id="right-side">
-<div id="free-space"></div>
+<div id="right-side" style="height:8% !important">
+<div id="free-space" style="height:180px !important"></div>
 <form  method="POST" action="{{ url('addCar') }}">
 {{ csrf_field() }}
 <table style="width:100%; ">

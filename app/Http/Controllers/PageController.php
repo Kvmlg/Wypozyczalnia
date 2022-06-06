@@ -50,6 +50,38 @@ class PageController extends Controller
         return view('detail', compact('car','all'));
     }
 
+    public function detaill($id){
+
+        if(isset($_POST['value'])){
+            $date=DB::table('szczegoly_najmu')->where('Samochod_idSamochod', $id)->get();
+            $data = new DateTime(date("Y").$value);
+            foreach($date as $dates){  
+            $wypo=$dates->Data_wypozyczenia;
+            $newDate = date("Y-m", strtotime($wypo));
+            if($newDate==$data){
+            $return=$dates->Data_zwrotu;
+            $newDateRet = date("Y-m", strtotime($return));
+                if($newDateRet==$data){
+                    $wypoAr=str_split($wypo, 1);
+                    $returnAr=str_split($return, 1);
+                    $day=$wypoAr[8].$wypoAr[9];
+                    $dayRet=$returnAr[8].$returnAr[9];
+                    $da=(int)$day;
+                    $daRet=(int)$dayRet;
+                    for($i=$da; $i <=$daRet; $i++){
+                    array_push($all, $i);
+                    }
+                    sort($all);
+                    }
+                    echo json_encode($all);
+                }
+            
+        
+        }
+        
+        return view('login');
+    }}
+
     public function rents(){
         Auth::check();
         $idUs= Auth::user()->id;

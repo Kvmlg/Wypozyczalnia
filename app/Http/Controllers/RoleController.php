@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
@@ -82,11 +83,27 @@ class RoleController extends Controller
         
         $Data_wypozyczenia = $request->input('Data_wypozyczenia');
         $Data_zwrotu = $request->input('Data_zwrotu');
-        $Samochod_idSamochod=$id;
-        $Users_idUsers=auth()->user()->id;
-        $data=array('Data_wypozyczenia'=>$Data_wypozyczenia, 'Data_zwrotu'=>$Data_zwrotu, 'Samochod_idSamochod'=>$Samochod_idSamochod,'Users_idUsers'=>$Users_idUsers);
-        DB::table('szczegoly_najmu')->insert($data);
-        return back();
+        $Data_wypozyczeniaa=$Data_wypozyczenia;
+        $Data_zwrotu1=date('Y-m-d', strtotime("+1 day", strtotime(str_replace('/', '-', $Data_zwrotu))));
+        str_replace('/', '-', $Data_wypozyczeniaa);
+        $date=DB::table('szczegoly_najmu')->where('Samochod_idSamochod', $id)->get();
+
+        foreach($date as $dates){ 
+            while($Data_wypozyczeniaa !== $Data_zwrotu1){ 
+                if(($Data_wypozyczeniaa >= str_replace('/', '-', $dates->Data_wypozyczenia))&&($Data_wypozyczeniaa <= str_replace('/', '-', $dates->Data_zwrotu))){
+                    return back()->withErrors([
+                        'message' => 'Termin zajety!'
+                    ]);
+                }
+                $Data_wypozyczeniaa=date('Y-m-d', strtotime("+1 day", strtotime($Data_wypozyczeniaa)));
+            }
+        }
+            $Samochod_idSamochod=$id;
+            $Users_idUsers=auth()->user()->id;
+            $data=array('Data_wypozyczenia'=>$Data_wypozyczenia, 'Data_zwrotu'=>$Data_zwrotu, 'Samochod_idSamochod'=>$Samochod_idSamochod,'Users_idUsers'=>$Users_idUsers);
+            DB::table('szczegoly_najmu')->insert($data);
+            return back();
+        
     }
 
     public function editRent(){

@@ -18,6 +18,20 @@ html {
   scroll-behavior: smooth !important;
 }
 
+select {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  border: 0;
+  border-radius: 20px;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+  width: 300px;
+  text-align: center;
+}
+
 h1,
 h2,
 h3,
@@ -47,6 +61,7 @@ button#but {
 
   div#days{
     padding-left:20%;
+    padding-right:20%;
   }
 
   input.data {
@@ -60,6 +75,7 @@ button#but {
     box-sizing: border-box;
     font-size: 14px;
     width: 300px;
+    text-align: center;
   }
 
 a:hover {

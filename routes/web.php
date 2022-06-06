@@ -23,7 +23,10 @@ use App\Http\Controllers\AdminController;
 Route::get('/', 'PageController@showCars');
 Route::get('/view', 'PageController@showCarsView');
 Route::get('/index', 'PageController@showCars');
+
 Route::get('/detail/{id}', 'PageController@detail');
+Route::post('/detail/{id}', 'PageController@detaill');
+
 Route::get('/login', 'LoginController@create');
 Route::post('/login', 'LoginController@store');
 Route::get('/logout', 'LoginController@destroy');

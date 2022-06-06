@@ -21,6 +21,26 @@
 <link href="{{ asset('css/style.css')}}" rel="stylesheet">
 </head>
 <body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script type="text/javascript">
+function reser(value){
+console.log(value);
+
+$.ajax({
+            url: '{{URL::current();}}',
+            type: 'post',
+            data: {value:value},
+            dataType: 'json',
+            success:function(value){
+                document.getElementById("days").innerHTML = all;
+                }
+        });
+    }
+
+
+
+</script>
 <!--/ Nav Star /-->
 <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top" style="position: relative;">
 <div class="container">
@@ -44,7 +64,7 @@
         <a class="nav-link" href="{{ url('index#onas') }}">O nas</a>
         </li>
         <li class="nav-item">
-        <a class="nav-link active" href="{{ url('index#nowesam') }}">Samochody</a>
+        <a class="nav-link active" href="{{ url('view') }}">Samochody</a>
         </li>
         <li class="nav-item">
         <a class="nav-link" href="{{ url('index#kontakt') }}">Kontakt</a>
@@ -52,10 +72,10 @@
     </ul>
     </div>
     @if( auth()->check() )
-      <a>Witaj <a style="Color:#2eca6a">&nbsp{{ auth()->user()->Imie }}</a>!&nbsp&nbsp</a>
-          @if(Auth::check() && Auth::user()->Ranga == "Admin")
-          <a href="{{ url('admin') }}"><img src="{{ asset('images/icon-admin.png')}}" height="25px" width="25px" ></a>
-          @endif
+        <a>Witaj <a style="Color:#2eca6a">&nbsp{{ auth()->user()->Imie }}</a>!&nbsp&nbsp</a>
+        @if(Auth::check() && Auth::user()->Ranga == "Admin")
+        <a href="{{ url('admin') }}"><img src="{{ asset('images/icon-admin.png')}}" height="25px" width="25px" ></a>
+        @endif
       <a class="nav-link" href="{{ url('logout') }}" style="margin-left:30px;">   Wyloguj</a> 
       @else
       <a class="btn btn-b-n navbar-toggle-box-collapse d-none d-md-block" href="{{ url('login') }}">
@@ -75,13 +95,31 @@
 <div class="row" style="height:900px; margin-top:35px; ">
 @foreach ($car as $cars)
     <br>
-    <div class="left" style="margin-top:30px; left:15px; height:700px; width:400px; background-color:#2eca6a; border-radius:20px; padding-top:25px; float:left;">
+    <div class="left" style="margin-top:30px; left:15px; height:800px; width:400px; background-color:#2eca6a; border-radius:20px; padding-top:25px; float:left;">
     
         <img src="../{{$cars->Photo}}" style=" max-width:90%; max-height:70%; object-fit: cover; border-radius: 20px;  display: block; margin-left: auto; margin-right: auto";>
+            <div class="java" id="java" style="text-align:center">
+            <br><a class="resName">Sprawdź dostępność:</a>
+            <select name="mounth" id="mounth" onchange="reser(this.value)">
+                <option value="null">---</option>
+                <option value="01">Styczeń</option>
+                <option value="02">Luty</option>
+                <option value="03">Marzec</option>
+                <option value="04">Kwiecień</option>
+                <option value="05">Maj</option>
+                <option value="06">Czerwiec</option>
+                <option value="07">Lipiec</option>
+                <option value="08">Sierpień</option>
+                <option value="09">Wrzesień</option>
+                <option value="10">Październik</option>
+                <option value="11">Listopad</option>
+                <option value="12">Grudzień</option>
+            </select>
+            </div>
             <div class="reserved" id="days">
             @if( $all )
                 <div style="width:250px;">
-                <br><a class="resName">Zarezerwowane dni:</a>
+                <a class="resName">Zarezerwowane dni:</a>
 
                 <a class="resName" style=" color:red !important "><br>
                 @foreach ($all as $alll)
@@ -95,9 +133,9 @@
                 {{ csrf_field() }}
                 <div class="reserved" style="margin-top:2rem;">
                     <a class="resName" >Dzień rezerwacji:</a><br>
-                    <input type="date" class="data" name="Data_wypozyczenia"><br><br>
+                    <input type="date" min="<?php echo date("Y-m-d"); ?>" class="data" name="Data_wypozyczenia"><br><br>
                     <a class="resName">Dzień zwrotu:</a><br>
-                    <input type="date" class="data" name="Data_zwrotu"><br><br>
+                    <input type="date" min="<?php echo date("Y-m-d"); ?>" class="data" name="Data_zwrotu"><br><br>
                     <button type="submit" id="but">Rezerwuj</button>
                 </div>
             </form>
