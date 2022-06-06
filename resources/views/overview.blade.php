@@ -28,7 +28,7 @@
       <div class="title-wrap d-flex justify-content-between">
       <div class="row">
       @foreach ($show as $showw) 
-        <div class="col-md-4" style="padding-bottom: 30px"> 
+        <div class="col-md-4" style="padding-bottom: 30px;"> 
         <div class="card-box-d">
           <div class="card-box-a card-shadow">
             <div class="img-box-a">
