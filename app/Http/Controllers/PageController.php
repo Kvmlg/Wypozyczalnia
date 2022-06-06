@@ -85,9 +85,17 @@ class PageController extends Controller
     public function rents(){
         Auth::check();
         $idUs= Auth::user()->id;
-        $show=DB::table('szczegoly_najmu')->where('Users_idUsers', $idUs)->join('samochod', 'szczegoly_najmu.Samochod_idSamochod', '=', 'samochod.idSamochod')->select('szczegoly_najmu.*', 'samochod.Marka','samochod.Model')->get();
+        $days = array();
+        $show=DB::table('szczegoly_najmu')->where('Users_idUsers', $idUs)->join('samochod', 'szczegoly_najmu.Samochod_idSamochod', '=', 'samochod.idSamochod')->select('szczegoly_najmu.*', 'samochod.Marka','samochod.Model','samochod.Cena')->get();
         
-        return view('Rents', compact('show'));
+        foreach($show as $shows){
+            $wypo=Carbon::create($shows->Data_wypozyczenia);
+            $zwrot=Carbon::create($shows->Data_zwrotu);
+            $diff=$wypo->diffInDays($zwrot);
+            array_push($days, $diff);
+        }
+
+        return view('Rents', compact('show', 'days'));
     }
 
 }

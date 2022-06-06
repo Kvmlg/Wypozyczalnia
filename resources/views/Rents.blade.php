@@ -2,6 +2,7 @@
 @section('title', 'Wynajmy')
 @section('aktyw', 'active')
 @section('container')
+
 <link href="{{ asset('css/table.css')}}" rel="stylesheet">
 <style>
     footer {
@@ -37,15 +38,21 @@
     <th id="name">Model</th>
     <th id="name">Data wypozyczenia</th>
     <th id="name">Data zwrotu</th>
+    <th id="name">Cena za wynajem</th>
     <th id="name">Stan rezerwacji</th>
   </tr>
+  <div style="display:none;"> {{$i=-1}}</div>
   @foreach ($show as $shows)
+  <div style="display:none;"> {{$i++}}</div>
   <tr>
     <td>{{$shows->idSzczegoly_najmu}}</td>
     <td>{{$shows->Marka}}</td>
     <td>{{$shows->Model}}</td>
     <td>{{$shows->Data_wypozyczenia}}</td>
     <td>{{$shows->Data_zwrotu}}</td>
+    <td>
+    {{($days[$i]+1) * $shows->Cena}}
+    </td>
 
     @switch ( $shows->Stan )
         @case ("Nowy")

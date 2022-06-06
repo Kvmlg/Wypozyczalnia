@@ -90,6 +90,11 @@ $.ajax({
         {!! implode('', $errors->all(':message')) !!}
 </div>
 @endif
+@if(\Session::has('success'))
+<div class="error" style="position: relative; background-color:green; height:2rem; text-align:center; color:white; margin-top:3px;">
+{!! \Session::get('success') !!}
+</div>
+@endif
 <!--/ Nav End /-->
 <div class="container">
 <div class="row" style="height:900px; margin-top:35px; ">

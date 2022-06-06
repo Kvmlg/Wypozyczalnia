@@ -83,6 +83,17 @@ class RoleController extends Controller
         
         $Data_wypozyczenia = $request->input('Data_wypozyczenia');
         $Data_zwrotu = $request->input('Data_zwrotu');
+        $now = Carbon::now();
+        if(($Data_wypozyczenia<$now)){
+            return back()->withErrors([
+                'message' => 'Nie możesz zarezerwować wstecz!'
+            ]);
+        }
+        if(($Data_zwrotu<$Data_wypozyczenia)){
+            return back()->withErrors([
+                'message' => 'Data zwrotu nie może być niższa od daty wypożyczenia!'
+            ]);    
+        }
         $Data_wypozyczeniaa=$Data_wypozyczenia;
         $Data_zwrotu1=date('Y-m-d', strtotime("+1 day", strtotime(str_replace('/', '-', $Data_zwrotu))));
         str_replace('/', '-', $Data_wypozyczeniaa);
@@ -102,7 +113,7 @@ class RoleController extends Controller
             $Users_idUsers=auth()->user()->id;
             $data=array('Data_wypozyczenia'=>$Data_wypozyczenia, 'Data_zwrotu'=>$Data_zwrotu, 'Samochod_idSamochod'=>$Samochod_idSamochod,'Users_idUsers'=>$Users_idUsers);
             DB::table('szczegoly_najmu')->insert($data);
-            return back();
+            return back()->with('success','Udało się zarezerwować pojazd!');
         
     }
 
