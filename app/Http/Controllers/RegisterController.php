@@ -24,7 +24,7 @@ class RegisterController extends Controller
             'Miasto' => 'required',
             'Ulica' => 'required',
             'NumerMieszkania' => 'required',
-            'Pesel' => 'required'
+            'Pesel' => ''
         ],[
             'Email.required' => "Wprowadź adres email",
             'password.required' => "Wprowadź haslo",
