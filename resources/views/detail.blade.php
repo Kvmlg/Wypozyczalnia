@@ -6,6 +6,7 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <meta content="" name="keywords">
 <meta content="" name="description">
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <!-- Favicons -->
 <link href="{{ asset('images/ikona.png')}}" rel="icon">
 <!-- Google Fonts -->
@@ -24,24 +25,50 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script type="text/javascript">
-function reser(value){
-console.log(value);
+function reser(value) {
+    console.log(value);
 
-$.ajax({
-            url: '{{URL::current();}}',
-            type: 'post',
-            data: {value:value},
-            dataType: 'json',
-            success:function(value){
-                document.getElementById("days").innerHTML = all;
-                }
-        });
+    $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        url: '{{URL::current();}}',
+        type: 'post',
+        data: { value: value },
+        dataType: 'json',
+        success: function (response) {
+            console.log('Zarezerwowane dni:', response);
+            displayReservedDays(response);
+        },
+        error: function (error) {
+            console.error('AJAX request failed:', error);
+        }
+    });
+}
+
+function displayReservedDays(days) {
+    var reservedDaysElement = document.getElementById('days2');
+
+    if (reservedDaysElement) {
+        reservedDaysElement.innerHTML = ''; // Wyczyszczenie istniejącej zawartości
+
+        if (days.length > 0) {
+            var resNameElement = document.createElement('a');
+            resNameElement.className = 'resName2';
+            resNameElement.style.color = 'red';
+            resNameElement.innerHTML = '<br>';
+
+            days.forEach(function (day) {
+                resNameElement.innerHTML += day + ' ';
+            });
+
+            reservedDaysElement.appendChild(resNameElement);
+        }
     }
-
-
-
+}
 </script>
 <!--/ Nav Star /-->
+
 <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top" style="position: relative;">
 <div class="container">
     <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
@@ -131,10 +158,7 @@ $.ajax({
                 <div style="width:250px;">
                 <a class="resName">Zarezerwowane dni:</a>
 
-                <a class="resName" style=" color:red !important "><br>
-                @foreach ($all as $alll)
-                {{$alll}}
-                @endforeach
+                <a class="resName2" id="days2" style=" color:red !important ">
                 </a>
 </div>
             @endif
